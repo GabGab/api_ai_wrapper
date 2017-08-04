@@ -1,0 +1,10 @@
+require "json"
+require "httpclient"
+require "securerandom"
+
+require "api_ai_wrapper/extensions/object"
+require "api_ai_wrapper/extensions/string"
+require "api_ai_wrapper/extensions/hash"
+require "api_ai_wrapper/constants"
+require "api_ai_wrapper/errors"
+require "api_ai_wrapper/engine"
