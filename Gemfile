@@ -9,3 +9,5 @@ group :test, :development do
   gem "simplecov"
   gem "webmock"
 end
+
+gemspec

@@ -1,3 +1,9 @@
+PATH
+  remote: .
+  specs:
+    api_ai_wrapper (1.0.0)
+      httpclient (~> 2.8, >= 2.8.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -39,6 +45,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  api_ai_wrapper!
   httpclient
   rspec
   simplecov
