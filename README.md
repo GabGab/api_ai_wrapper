@@ -2,9 +2,17 @@
 A simple library that let's any developer automate the training process of a Natural Language Processing Engine on API.AI, and retrieve meaning from new utterances.
 
 # To install
+Directly from a bash console
+
 ```ruby
 gem install api_ai_wrapper
 ```
+
+Or in your Gemfile
+```ruby
+gem "api_ai_wrapper"
+```
+
 
 The only gem dependency is `http_client` to manage HTTP calls to API.AI.
 
