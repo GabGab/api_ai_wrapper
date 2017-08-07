@@ -1,3 +1,4 @@
+# Hash Override taken from Rails
 class Hash
 
   def transform_keys

@@ -1,3 +1,4 @@
+# String Override taken from Rails
 class String
 
   def demodulize

@@ -1,3 +1,4 @@
+# Object Override taken from Rails
 class Object
   def blank?
     respond_to?(:empty?) ? empty? : !self
