@@ -7,23 +7,17 @@ module ApiAiWrapper::Trainers
     # https://api.ai/docs/reference/agent/intents#get_intents
     # Fetches all intents for a given token
     def get_intents
-      set_headers
       endpoint_url = URI.join(self.engine.base_url, "intents?v=#{self.engine.version}")
 
-      res = self.engine.client.get(endpoint_url, {}, self.engine.headers)
-
-      JSON.parse(res.body)
+      self.get(endpoint_url, {})
     end
 
     # https://api.ai/docs/reference/agent/intents#get_intentsiid
     # Retrieves intent info
     def get_intent(iid)
-      set_headers
       endpoint_url = URI.join(self.engine.base_url, "intents/#{iid}?v=#{self.engine.version}")
 
-      res = self.engine.client.get(endpoint_url, {}, self.engine.headers)
-
-      JSON.parse(res.body)
+      self.get(endpoint_url, {})
     end
 
     # https://api.ai/docs/reference/agent/intents#post_intents
@@ -33,7 +27,6 @@ module ApiAiWrapper::Trainers
     # - templates
     # - responses
     def post_intent(name, user_says_data, options = {})
-      set_headers
       body = options.merge({
         name: name,
         auto: true, # ML activated
@@ -41,31 +34,23 @@ module ApiAiWrapper::Trainers
       })
       endpoint_url = URI.join(self.engine.base_url, "intents?v=#{self.engine.version}")
 
-      res = self.engine.client.post(endpoint_url, body.to_json, self.engine.headers)
-
-      JSON.parse(res.body)
+      self.post(endpoint_url, body.to_json)
     end
 
     # https://api.ai/docs/reference/agent/intents#put_intentsiid
     # Update an intent
     def put_intent(iid, options = {})
-      set_headers
       endpoint_url = URI.join(self.engine.base_url, "intents/#{iid}?v=#{self.engine.version}")
 
-      res = self.engine.client.put(endpoint_url, options.to_json, self.engine.headers)
-
-      JSON.parse(res.body)
+      self.put(endpoint_url, options.to_json)
     end
 
     # https://api.ai/docs/reference/agent/entities#delete_entitieseid
     # Delete an intent
     def delete_intent(iid)
-      set_headers
       endpoint_url = URI.join(self.engine.base_url, "intents/#{iid}?v=#{self.engine.version}")
 
-      res = self.engine.client.delete(endpoint_url, {}, self.engine.headers)
-
-      JSON.parse(res.body)
+      self.delete(endpoint_url, {})
     end
 
   end
