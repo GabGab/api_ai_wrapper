@@ -22,7 +22,7 @@ module ApiAiWrapper::Components
     # Returns response if no error is returned
     def handle_response(response_body)
 
-      if response_body.is_a?(Hash) && response_body.has_key("status")
+      if response_body.is_a?(Hash) && response_body.has_key?("status")
         response_body = response_body.deep_symbolize_keys
         response_status = response_body[:status]
         response_code = response_status[:code]

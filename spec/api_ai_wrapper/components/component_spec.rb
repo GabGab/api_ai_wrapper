@@ -57,11 +57,27 @@ RSpec.describe ApiAiWrapper::Components::Component do
   end
 
   describe "#handle_response(response)" do
-    context "when API.AI call is successful (code is 200)" do
-      it "should return JSON parsed response" do
-        response = { "status" => { "code" => 200, "errorType" => "success" } }
+    context "when API.AI call is successful" do
+      context "from a GET request" do
+        it "should return JSON parsed array for a list GET" do
+          response = [{ "object-column" => "object-value" }]
 
-        expect(component.send(:handle_response, response)).to eq(response.deep_symbolize_keys)
+          expect(component.send(:handle_response, response)).to eq(response)
+        end
+
+        it "should return JSON parsed object for an instance GET" do
+          response = { "object-column" => "object-value" }
+
+          expect(component.send(:handle_response, response)).to eq(response)
+        end
+      end
+
+      context "from a POST/PUT/DELETE request" do
+        it "should return JSON parsed response" do
+          response = { "status" => { "code" => 200, "errorType" => "success" } }
+
+          expect(component.send(:handle_response, response)).to eq(response.deep_symbolize_keys)
+        end
       end
     end
 
