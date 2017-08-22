@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    api_ai_wrapper (1.0.4)
+    api_ai_wrapper (1.0.5)
       httpclient (~> 2.8, >= 2.8.0)
 
 GEM
