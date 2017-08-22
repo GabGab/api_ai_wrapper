@@ -1,6 +1,7 @@
 module ApiAiWrapper::Components
 
   class Component
+
     attr_accessor :engine
 
     # We define http_verb methods get/post/put/delete to add correct headers and parse result automatically
@@ -20,16 +21,20 @@ module ApiAiWrapper::Components
     # Throws an error if the call is not successful
     # Returns response if no error is returned
     def handle_response(response_body)
-      response = response_body.deep_symbolize_keys
-      response_status = response[:status]
-      response_code = response_status[:code]
 
-      if response_code != 200
-        raise ApiAiWrapper::Errors::Engine::ApiError.new(response_status[:errorDetails], response_code, response_status[:errorType])
+      if response_body.is_a?(Hash) && response_body.has_key("status")
+        response_body = response_body.deep_symbolize_keys
+        response_status = response_body[:status]
+        response_code = response_status[:code]
+
+        if response_code != 200
+          raise ApiAiWrapper::Errors::Engine::ApiError.new(response_status[:errorDetails], response_code, response_status[:errorType])
+        end
       end
 
-      response
+      response_body
     end
+
   end
   
 end
